@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
 import {translate, keys} from 'utils/translate'
-import {api} from 'utils/api'
+import {api} from 'api'
 
-const cn = makeBem('MapPage__Sidebar__SprayingSelect')
+const cn = makeBem('SprayingSelect')
 
 export class SprayingSelect extends Component {
   state = {

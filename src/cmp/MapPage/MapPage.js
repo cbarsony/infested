@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import makeBem from 'bem-cx'
 
-import {api} from 'utils/api'
+import {api} from 'api'
 import {translate, keys} from 'utils/translate'
 
 import {Sidebar} from './Sidebar/Sidebar'

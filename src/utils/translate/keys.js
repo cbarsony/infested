@@ -23,6 +23,10 @@ export const keys = {
     en: 'choose one',
     hu: 'válasszon egyet',
   },
+  CLOSE: {
+    en: 'close',
+    hu: 'bezár',
+  },
   COLUMNS: {
     en: 'columns',
     hu: 'oszlopok',
@@ -58,6 +62,14 @@ export const keys = {
   MAP: {
     en: 'map',
     hu: 'térkép',
+  },
+  NO: {
+    en: 'no',
+    hu: 'nem',
+  },
+  OPEN_DATA_TABLE: {
+    en: 'open_data_table',
+    hu: 'táblázat megnyitása',
   },
   PAGES: {
     en: 'pages',
@@ -122,6 +134,10 @@ export const keys = {
   USER_NAME: {
     en: 'user name',
     hu: 'felhasználónév',
+  },
+  YES: {
+    en: 'yes',
+    hu: 'igen',
   },
   WATER: {
     en: 'water',

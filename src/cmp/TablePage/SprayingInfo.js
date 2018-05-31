@@ -2,15 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
-import {SprayingDescription, SprayingSummary} from 'utils/api/classes'
+import {SprayingDescription} from 'api/classes'
 
-const cn = makeBem('TablePage__SprayingInfo')
+const cn = makeBem('SprayingInfo')
 
-export const SprayingInfo = props => (
-  <div className={cn}>SprayingInfo</div>
-)
+export const SprayingInfo = props => <div className={cn}>{props.description.databaseName}</div>
 
-SprayingInfo.propTypes = {
-  description: PropTypes.instanceOf(SprayingDescription).isRequired,
-  summary: PropTypes.instanceOf(SprayingSummary).isRequired,
-}
+SprayingInfo.propTypes = {description: PropTypes.instanceOf(SprayingDescription).isRequired}

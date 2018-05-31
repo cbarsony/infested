@@ -12,15 +12,18 @@ class TablePage {
     isSprayingLoading:bool
 }
 
-class Control {
+class SprayingTableControl {
     sectionList:Section[]
     --
-    settings:SprayingTableSettings
+    weed:bool
+    chemical1:bool
+    chemical2:bool
+    chemical3:bool
+    chemical4:bool
 }
 
 class SprayingInfo {
     description:SprayingDescription
-    summary:SprayingSummary
 }
 
 class SprayingTable {
@@ -30,8 +33,8 @@ class SprayingTable {
 }
 
 Route -- TablePage
-TablePage -- Control
+TablePage -- SprayingTableControl
 TablePage -- SprayingInfo
-Control -- SprayingTable
+SprayingTableControl -- SprayingTable
 
 @enduml

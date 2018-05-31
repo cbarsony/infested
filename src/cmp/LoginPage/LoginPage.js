@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import makeBem from 'bem-cx'
 import PropTypes from 'prop-types'
 
-import {Field, Warning} from 'cmp/Form'
+import {Field, Warning} from 'cmp/App/Form'
 import {translate, keys} from 'utils/translate'
-import {api} from 'utils/api'
+import {api} from 'api'
 import {constants} from 'utils/constants'
 
 const cn = makeBem('LoginPage')

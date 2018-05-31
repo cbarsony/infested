@@ -4,16 +4,14 @@ import makeBem from 'bem-cx'
 import _ from 'lodash'
 
 import {translate, keys} from 'utils/translate'
-import {SprayingSummary as CSprayingSummary} from 'utils/api/classes.js'
-import {Field} from 'cmp/Form'
+import {SprayingSummary as CSprayingSummary} from 'api/classes.js'
+import {Field} from 'cmp/App/Form'
 
-const cn = makeBem('MapPage__Sidebar__SprayingSummary')
+const cn = makeBem('SprayingSummary')
 const showAllSectorsCheckbox = cn.el('showAllSectorsCheckbox').toString()
 
 export class SprayingSummary extends Component {
-  state = {
-    areSectorsVisible: false,
-  }
+  state = {areSectorsVisible: false}
 
   onShowAllSectorsCheckboxChange = e => this.setState({areSectorsVisible: e.target.checked})
 
@@ -75,6 +73,4 @@ export class SprayingSummary extends Component {
   }
 }
 
-SprayingSummary.propTypes = {
-  summary: PropTypes.instanceOf(CSprayingSummary).isRequired,
-}
+SprayingSummary.propTypes = {summary: PropTypes.instanceOf(CSprayingSummary).isRequired}

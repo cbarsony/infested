@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
-import {api} from 'utils/api'
+import {api} from 'api'
 import {translate, keys} from 'utils/translate'
 
-import {Control} from './Control'
+import {SprayingTableControl} from './SprayingTableControl'
 import {SprayingInfo} from './SprayingInfo'
 
 const cn = makeBem('TablePage')
@@ -32,16 +32,11 @@ export class TablePage extends Component {
 
     return (
       <div className={cn}>
-        <SprayingInfo
-          description={state.spraying.description}
-          summary={state.spraying.summary}
-        />
-        <Control sectionList={state.spraying.sections}/>
+        <SprayingInfo description={state.spraying.description}/>
+        <SprayingTableControl sectionList={state.spraying.sections}/>
       </div>
     )
   }
 }
 
-TablePage.propTypes = {
-  sprayingId: PropTypes.number.isRequired,
-}
+TablePage.propTypes = {sprayingId: PropTypes.number.isRequired}

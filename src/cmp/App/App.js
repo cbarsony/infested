@@ -7,7 +7,7 @@ import {MapPage} from 'cmp/MapPage'
 import {TablePage} from 'cmp/TablePage'
 import {constants} from 'utils/constants'
 import {translate, keys} from 'utils/translate'
-import {api} from 'utils/api'
+import {api} from 'api'
 
 import {Navbar} from './Navbar'
 

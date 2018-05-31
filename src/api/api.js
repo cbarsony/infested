@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 
-import {translate, keys} from 'utils/translate'
-import {constants} from 'utils/constants'
+import {translate, keys} from 'utils/translate/index'
+import {constants} from 'utils/constants/index'
 
 import {
   Spraying,

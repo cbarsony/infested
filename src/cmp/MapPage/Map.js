@@ -3,16 +3,14 @@ import * as ol from 'openlayers'
 import PropTypes from 'prop-types'
 
 import {translate, keys} from 'utils/translate'
-import {Spraying} from 'utils/api/classes.js'
+import {Spraying} from 'api/classes.js'
 
 import {Popup} from './Popup'
 
 const popupContainer = document.getElementById('sectionDataPopup')
 
 export class Map extends Component {
-  state = {
-    selectedSectionIndex: -1,
-  }
+  state = {selectedSectionIndex: -1}
 
   componentDidMount() {
     const sprayedVectorSource = new ol.source.Vector({})
@@ -139,7 +137,10 @@ export class Map extends Component {
         <div
           id="map"
           className="map"
-          style={{height: '100%'}}
+          style={{
+            position: 'relative',
+            height: '100%'
+          }}
           ref={node => this.mapNode = node}
         >
           <button
@@ -167,6 +168,4 @@ export class Map extends Component {
   }
 }
 
-Map.propTypes = {
-  spraying: PropTypes.instanceOf(Spraying),
-}
+Map.propTypes = {spraying: PropTypes.instanceOf(Spraying)}

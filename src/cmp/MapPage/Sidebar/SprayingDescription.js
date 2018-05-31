@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
-import {SprayingDescription as CSprayingDescription} from 'utils/api/classes.js'
+import {SprayingDescription as CSprayingDescription} from 'api/classes.js'
 
-const cn = makeBem('MapPage__Sidebar__SprayingDescription')
+const cn = makeBem('SprayingDescription')
 
 export const SprayingDescription = props => (
   <ul className={cn}>
@@ -16,6 +16,4 @@ export const SprayingDescription = props => (
   </ul>
 )
 
-SprayingDescription.propTypes = {
-  description: PropTypes.instanceOf(CSprayingDescription),
-}
+SprayingDescription.propTypes = {description: PropTypes.instanceOf(CSprayingDescription)}
