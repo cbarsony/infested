@@ -3,22 +3,19 @@ import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
-import {constants} from 'utils/constants'
-import {translate, keys} from 'utils/translate'
+import {constants} from 'utils/constants/index'
+import {translate, keys} from 'utils/translate/index'
+
+import {LocaleSwitch} from './LocaleSwitch'
 
 const cn = makeBem('Navbar')
 
-const Links = () => (
-  <div>
-    <Link to={constants.paths.MAP_PAGE}>{translate(keys.MAP)}</Link>
-    <Link to={constants.paths.TABLE_PAGE + '/1'}>{translate(keys.TABLE)}</Link>
-  </div>
-)
-
 export const Navbar = props => (
   <div className={cn}>
-    <h1>G&G</h1>
-    {props.isUser && <Links/>}
+    <h1>
+      <Link to={constants.paths.MAP_PAGE}>G&G</Link>
+    </h1>
+    <LocaleSwitch/>
     {props.isUser && <button onClick={props.logout}>{translate(keys.LOGOUT)}</button>}
   </div>
 )

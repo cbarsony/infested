@@ -68,7 +68,7 @@ export const keys = {
     hu: 'nem',
   },
   OPEN_DATA_TABLE: {
-    en: 'open_data_table',
+    en: 'open data table',
     hu: 'táblázat megnyitása',
   },
   PAGES: {
