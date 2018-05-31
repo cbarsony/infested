@@ -1,0 +1,44 @@
+@startuml
+
+class MapPage {
+    --
+    spraying:Spraying
+    isSprayingLoading:bool
+}
+
+class Sidebar {
+    spraying:Spraying
+    selectSpraying(id:number)
+    --
+}
+
+class Map {
+    spraying:Spraying
+}
+
+class SprayingSelect {
+    sprayingId:number
+    selectSpraying(id:number)
+    --
+    shortSprayingDescriptionList:ShortSprayingDescription[]
+    isShortSprayingDescriptionListLoading:bool
+}
+
+class SprayingDescription {
+    description:SprayingDescription
+}
+
+class SprayingSummary {
+    summary:SprayingSummary
+    --
+    areSectorsVisible:bool
+}
+
+MapPage -- Sidebar
+MapPage -- Map
+
+Sidebar -- SprayingSelect
+Sidebar -- SprayingDescription
+Sidebar -- SprayingSummary
+
+@enduml

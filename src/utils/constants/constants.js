@@ -2,6 +2,6 @@ import {paths} from './paths'
 
 export const constants = {
   paths,
-  delay: 200,
+  delay: 300,
   navbarHeight: 60,
 }

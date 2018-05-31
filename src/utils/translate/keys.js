@@ -19,6 +19,10 @@ export const keys = {
     en: 'chemicals',
     hu: 'vegyszerek',
   },
+  CHOOSE_ONE: {
+    en: 'choose one',
+    hu: 'válasszon egyet',
+  },
   COLUMNS: {
     en: 'columns',
     hu: 'oszlopok',
@@ -94,6 +98,10 @@ export const keys = {
   SETTINGS: {
     en: 'settings',
     hu: 'beállítások',
+  },
+  SHOW_ALL_SECTORS: {
+    en: 'show all sectors',
+    hu: 'mutass minden szektort',
   },
   SPRAYED: {
     en: 'sprayed',

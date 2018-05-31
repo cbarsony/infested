@@ -66,17 +66,6 @@ export class App extends Component {
     return (
       <Router>
         <div className={cn}>
-          <Route
-            path={constants.paths.ROOT}
-            render={({location}) => {
-              if (location.pathname !== constants.paths.LOGIN_PAGE && !state.isUser) {
-                return <Redirect to={constants.paths.LOGIN_PAGE}/>
-              }
-              else {
-                return null
-              }
-            }}
-          />
           <Navbar
             isUser={state.isUser}
             logout={this.onLogout}
@@ -89,21 +78,35 @@ export class App extends Component {
             />
             <Route
               path={constants.paths.LOGIN_PAGE}
-              render={({history}) => state.isUser ?
+              render={({history: {push}}) => state.isUser ?
                 <Redirect to={constants.paths.MAP_PAGE}/> :
                 <LoginPage
-                  history={history}
+                  push={push}
                   loginSuccess={this.onLogin}
                 />
               }
             />
             <Route
               path={constants.paths.MAP_PAGE}
-              component={MapPage}
+              render={({history: {push}}) => state.isUser ?
+                <MapPage/> :
+                <LoginPage
+                  push={push}
+                  loginSuccess={this.onLogin}
+                />
+              }
             />
             <Route
-              path={constants.paths.TABLE_PAGE + '/:id'}
-              component={TablePage}
+              path={constants.paths.TABLE_PAGE + '/:sprayingId'}
+              render={({history: {push}, match: {params: {sprayingId}}}) => {
+                return state.isUser ?
+                  <TablePage sprayingId={Number(sprayingId)}/> :
+                  <LoginPage
+                    push={push}
+                    loginSuccess={this.onLogin}
+                  />
+                }
+              }
             />
           </Switch>
         </div>

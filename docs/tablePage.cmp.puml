@@ -1,0 +1,37 @@
+@startuml
+
+class Route {
+    --
+    match:Object
+}
+
+class TablePage {
+    sprayingId:number
+    --
+    spraying:Spraying
+    isSprayingLoading:bool
+}
+
+class Control {
+    sectionList:Section[]
+    --
+    settings:SprayingTableSettings
+}
+
+class SprayingInfo {
+    description:SprayingDescription
+    summary:SprayingSummary
+}
+
+class SprayingTable {
+    sectionList:Section[]
+    areWeedSectorsVisible:bool
+    chemicalSectorVisibility:Array
+}
+
+Route -- TablePage
+TablePage -- Control
+TablePage -- SprayingInfo
+Control -- SprayingTable
+
+@enduml

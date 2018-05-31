@@ -2,8 +2,8 @@ export class Spraying {
   /**
    * @param id {number}
    * @param sections {Section[]}
-   * @param description {Description}
-   * @param summary {Summary}
+   * @param description {SprayingDescription}
+   * @param summary {SprayingSummary}
    */
   constructor(id, sections, description, summary) {
     this.id = id
@@ -53,7 +53,7 @@ export class Section {
   }
 }
 
-export class Description {
+export class SprayingDescription {
   /**
    * @param requestType {string}
    * @param databaseName {string}
@@ -70,7 +70,7 @@ export class Description {
   }
 }
 
-export class Summary {
+export class SprayingSummary {
   /**
    * @param water {number}
    * @param weedInfestationSummary {WeedInfestationSummary}
@@ -115,5 +115,16 @@ export class WeedInfestationSummary {
   constructor(quantity, sectorQuantities) {
     this.quantity = quantity
     this.sectorQuantities = sectorQuantities
+  }
+}
+
+export class ShortSprayingDescription {
+  /**
+   * @param id {number}
+   * @param description {string}
+   */
+  constructor(id, description) {
+    this.id = id
+    this.description = description
   }
 }

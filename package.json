@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "bem-cx": "^0.3.2",
+    "lodash": "^4.17.10",
+    "openlayers": "^4.6.5",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

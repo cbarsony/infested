@@ -1,16 +1,19 @@
+/* eslint-disable array-callback-return */
+
 import {translate, keys} from 'utils/translate'
 import {constants} from 'utils/constants'
 
 import {
   Spraying,
-  Description,
+  SprayingDescription,
   ChemicalSummary,
-  Summary,
+  SprayingSummary,
   SectorQuantity,
   WeedInfestationSummary,
   Position,
   Section,
-} from './Spraying'
+  ShortSprayingDescription,
+} from './classes'
 
 const login = (username, password) => new Promise((resolve, reject) => setTimeout(() => {
   if(username === 'Test user' && password === 'pass') {
@@ -33,16 +36,10 @@ const authenticate = token => new Promise((resolve, reject) => setTimeout(() => 
   }
 }, constants.delay))
 
-const getSprayingList = () => new Promise(resolve => setTimeout(() => resolve(
+const getShortSprayingDescriptionList = () => new Promise(resolve => setTimeout(() => resolve(
   [
-    {
-      id: 1,
-      description: 'Belgium second campaign 2017/1',
-    },
-    {
-      id: 2,
-      description: 'Belgium second campaign 2017/2',
-    },
+    new ShortSprayingDescription(1, 'Belgium second campaign 2017/1'),
+    new ShortSprayingDescription(2, 'Belgium second campaign 2017/2'),
   ]), constants.delay))
 
 const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
@@ -74,7 +71,7 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
       '2500;50,40885326;4,402654988;Y;Kyleo;0;0;0;0;0;0;0;0;0;0;0; ; ;Panic Free;0,118;5;0,055;0,018;0,008;0;0,034;0,003;0;0;0;Y; ;Vival;0,009;0,4;0,004;0,001;0,001;0;0,003;0;0;0;0;Y; ;Genoxone;0,108;4,6;0,05;0,016;0,007;0;0,032;0,003;0;0;0;Y; ;7,432;250;4,63;14,38;3,1;0,62;0,21;0,88;0,19;0,26;0,25;0,04',
     ]
 
-    const campaign1Description = new Description(
+    const campaign1Description = new SprayingDescription(
       '100 m summarized data',
       'Belgium second campaign 2017/1',
       'Charleroi-Sud - Brussels-Zuid',
@@ -82,7 +79,7 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
       '55,183 km',
     )
 
-    const campaign2Description = new Description(
+    const campaign2Description = new SprayingDescription(
       '100 m summarized data',
       'Belgium second campaign 2017/2',
       'Charleroi-Sud - Brussels-Zuid',
@@ -95,7 +92,7 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
       4.696,
       [
         new SectorQuantity(1, 123.123),
-        new SectorQuantity(2, 123.123),
+        new SectorQuantity(2, 555.123),
         new SectorQuantity(3, 123.123),
         new SectorQuantity(4, 123.123),
         new SectorQuantity(5, 123.123),
@@ -111,7 +108,7 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
       4.696,
       [
         new SectorQuantity(1, 123.123),
-        new SectorQuantity(2, 123.123),
+        new SectorQuantity(2, 444.123),
         new SectorQuantity(3, 123.123),
         new SectorQuantity(4, 123.123),
         new SectorQuantity(5, 123.123),
@@ -127,7 +124,7 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
       46.544,
       [
         new SectorQuantity(1, 123.123),
-        new SectorQuantity(2, 123.123),
+        new SectorQuantity(2, 333.123),
         new SectorQuantity(3, 123.123),
         new SectorQuantity(4, 123.123),
         new SectorQuantity(5, 123.123),
@@ -143,7 +140,7 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
       42.861,
       [
         new SectorQuantity(1, 123.123),
-        new SectorQuantity(2, 123.123),
+        new SectorQuantity(2, 222.123),
         new SectorQuantity(3, 123.123),
         new SectorQuantity(4, 123.123),
         new SectorQuantity(5, 123.123),
@@ -154,7 +151,7 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
       ],
     )
 
-    const campaignSummary = new Summary(
+    const campaignSummary = new SprayingSummary(
       4.696,
       new WeedInfestationSummary(
         3.56,
@@ -269,6 +266,6 @@ const getSpraying = id => new Promise((resolve, reject) => setTimeout(() => {
 export const api = {
   login,
   authenticate,
-  getSprayingList,
+  getShortSprayingDescriptionList,
   getSpraying,
 }

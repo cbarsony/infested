@@ -11,7 +11,7 @@ const cn = makeBem('Navbar')
 const Links = () => (
   <div>
     <Link to={constants.paths.MAP_PAGE}>{translate(keys.MAP)}</Link>
-    <Link to={constants.paths.TABLE_PAGE}>{translate(keys.TABLE)}</Link>
+    <Link to={constants.paths.TABLE_PAGE + '/1'}>{translate(keys.TABLE)}</Link>
   </div>
 )
 

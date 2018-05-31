@@ -18,12 +18,9 @@ export class LoginPage extends Component {
     isLoginLoading: false,
   }
 
-  static propTypes = {
-    history: PropTypes.object.isRequired,
-    loginSuccess: PropTypes.func.isRequired,
-  }
+  onLogin = e => {
+    e.preventDefault()
 
-  onLoginClick = e => {
     this.setState({
       errorMessage: '',
       isLoginLoading: true,
@@ -34,7 +31,7 @@ export class LoginPage extends Component {
         localStorage.setItem('token', userData.token)
         localStorage.setItem('username', userData.username)
         this.props.loginSuccess()
-        this.props.history.push(constants.paths.MAP_PAGE)
+        this.props.push(constants.paths.MAP_PAGE)
       })
       .catch(errorMessage => this.setState({
         isLoginLoading: false,
@@ -50,7 +47,7 @@ export class LoginPage extends Component {
     return (
       <form
         className={cn}
-        onSubmit={this.onLoginClick}
+        onSubmit={this.onLogin}
       >
         <Field
           label={translate(keys.USER_NAME)}
@@ -77,4 +74,9 @@ export class LoginPage extends Component {
       </form>
     )
   }
+}
+
+LoginPage.propTypes = {
+  push: PropTypes.func.isRequired,
+  loginSuccess: PropTypes.func.isRequired,
 }
