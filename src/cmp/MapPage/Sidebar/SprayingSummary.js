@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 import {translate, keys} from 'utils/translate'
 import {SprayingSummary as CSprayingSummary} from 'api/classes.js'
-import {Field} from 'cmp/App/Form'
+import {Field} from 'cmp/App/Form/Field'
 
 const cn = makeBem('SprayingSummary')
 const showAllSectorsCheckbox = cn.el('showAllSectorsCheckbox').toString()
@@ -13,7 +13,7 @@ const showAllSectorsCheckbox = cn.el('showAllSectorsCheckbox').toString()
 export class SprayingSummary extends Component {
   state = {areSectorsVisible: false}
 
-  onShowAllSectorsCheckboxChange = e => this.setState({areSectorsVisible: e.target.checked})
+  onShowAllSectorsCheckboxChange = value => this.setState({areSectorsVisible: value})
 
   render() {
     const props = this.props
@@ -29,7 +29,7 @@ export class SprayingSummary extends Component {
 
     const getChemicalSectorCells = sector => <td key={sector.sectorId}>{sector.quantity}</td>
 
-    const showAllSectorsSwitch = (
+    /*const showAllSectorsSwitchx = (
       <Field
         label={translate(keys.SHOW_ALL_SECTORS)}
         htmlFor={showAllSectorsCheckbox}
@@ -40,6 +40,16 @@ export class SprayingSummary extends Component {
           onChange={this.onShowAllSectorsCheckboxChange}
         />
       </Field>
+    )*/
+
+    const showAllSectorsSwitch = (
+      <Field
+        name={showAllSectorsCheckbox}
+        type="checkbox"
+        value={false}
+        label={translate(keys.SHOW_ALL_SECTORS)}
+        onChange={this.onShowAllSectorsCheckboxChange}
+      />
     )
 
     return (

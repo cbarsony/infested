@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bem-cx": "^0.3.2",
+    "immutability-helper": "^2.7.0",
     "lodash": "^4.17.10",
     "openlayers": "^4.6.5",
     "prop-types": "^15.6.1",

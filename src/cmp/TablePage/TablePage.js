@@ -5,8 +5,8 @@ import makeBem from 'bem-cx'
 import {api} from 'api'
 import {translate, keys} from 'utils/translate'
 
-import {SprayingTableControl} from './SprayingTableControl'
-import {SprayingInfo} from './SprayingInfo'
+import {Control} from './Control'
+import {Info} from './Info'
 
 const cn = makeBem('TablePage')
 
@@ -32,8 +32,8 @@ export class TablePage extends Component {
 
     return (
       <div className={cn}>
-        <SprayingInfo description={state.spraying.description}/>
-        <SprayingTableControl sectionList={state.spraying.sections}/>
+        <Info description={state.spraying.description}/>
+        <Control sectionList={state.spraying.sections}/>
       </div>
     )
   }
