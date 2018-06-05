@@ -10,6 +10,7 @@ import {translate, keys} from 'utils/translate'
 import {api} from 'api'
 
 import {Navbar} from './Navbar'
+import './App.css'
 
 const cn = makeBem('App')
 

@@ -15,8 +15,10 @@ export const Navbar = props => (
     <h1>
       <Link to={constants.paths.MAP_PAGE}>G&G</Link>
     </h1>
-    <LocaleSwitch/>
-    {props.isUser && <button onClick={props.logout}>{translate(keys.LOGOUT)}</button>}
+    <div>
+      <LocaleSwitch/>
+      {props.isUser && <button onClick={props.logout}>{translate(keys.LOGOUT)}</button>}
+    </div>
   </div>
 )
 

@@ -1,0 +1,51 @@
+.App {
+    display: grid;
+    grid-template-rows: 32px auto;
+    height: 100%;
+
+    font-family: sans-serif;
+}
+
+.Navbar {
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+
+    background: #9c3;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3)
+}
+
+.Navbar a {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration-line: none;
+    transition: opacity 0.25s;
+}
+
+.Navbar a:hover {
+    opacity: 0.7;
+}
+
+.MapPage {
+    display: grid;
+    grid-template-columns: 350px auto;
+
+    height: 100%;
+}
+
+.Sidebar {
+    z-index: 1;
+
+    padding: 8px;
+
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+}
+
+.TablePage {
+    overflow-x: auto;
+    padding: 8px;
+}

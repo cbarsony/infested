@@ -132,14 +132,17 @@ export class Map extends Component {
     return (
       <div
         className="Map"
-        style={{height: 400}}
+        style={{position: 'relative'}}
       >
         <div
           id="map"
           className="map"
           style={{
-            position: 'relative',
-            height: '100%'
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
           }}
           ref={node => this.mapNode = node}
         >
