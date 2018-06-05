@@ -1,6 +1,13 @@
 @startuml
 
+class Route {
+    --
+    match:Object
+}
+
 class MapPage {
+    sprayingId:number
+    sectionId:number
     --
     spraying:Spraying
     isSprayingLoading:bool
@@ -8,19 +15,20 @@ class MapPage {
 
 class Sidebar {
     spraying:Spraying
-    selectSpraying(id:number)
     --
 }
 
 class Map {
     spraying:Spraying
+    sectionId:number
     --
-    selectedSectionIndex:number
+    selectedSectionId:number
 }
 
 class SprayingSelect {
+    #history:Object
+    --
     sprayingId:number
-    selectSpraying(id:number)
     --
     shortSprayingDescriptionList:ShortSprayingDescription[]
     isShortSprayingDescriptionListLoading:bool
@@ -35,6 +43,8 @@ class SprayingSummary {
     --
     areSectorsVisible:bool
 }
+
+Route -- MapPage
 
 MapPage -- Sidebar
 MapPage -- Map

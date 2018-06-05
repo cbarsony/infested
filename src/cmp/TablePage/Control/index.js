@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
-import {Section} from 'api/classes'
 import {translate, keys} from 'utils/translate'
 import {Field} from 'cmp/App/Form/Field'
 
@@ -22,7 +20,6 @@ export class Control extends Component {
   onCheckChange = (value, name) => this.setState({[name]: value})
 
   render() {
-    const props = this.props
     const state = this.state
 
     return (
@@ -70,11 +67,8 @@ export class Control extends Component {
             state.chemical3,
             state.chemical4,
           ]}
-          sectionList={props.sectionList}
         />
       </div>
     )
   }
 }
-
-Control.propTypes = {sectionList: PropTypes.arrayOf(PropTypes.instanceOf(Section)).isRequired}

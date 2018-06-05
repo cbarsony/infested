@@ -87,6 +87,29 @@ export class App extends Component {
               }
             />
             <Route
+              path={constants.paths.MAP_PAGE + '/:sprayingId/:sectionId'}
+              render={({history: {push}, match: {params: {sprayingId, sectionId}}}) => state.isUser ?
+                <MapPage
+                  sprayingId={Number(sprayingId)}
+                  sectionId={Number(sectionId)}
+                /> :
+                <LoginPage
+                  push={push}
+                  loginSuccess={this.onLogin}
+                />
+              }
+            />
+            <Route
+              path={constants.paths.MAP_PAGE + '/:sprayingId'}
+              render={({history: {push}, match: {params: {sprayingId}}}) => state.isUser ?
+                <MapPage sprayingId={Number(sprayingId)}/> :
+                <LoginPage
+                  push={push}
+                  loginSuccess={this.onLogin}
+                />
+              }
+            />
+            <Route
               path={constants.paths.MAP_PAGE}
               render={({history: {push}}) => state.isUser ?
                 <MapPage/> :
@@ -98,14 +121,12 @@ export class App extends Component {
             />
             <Route
               path={constants.paths.TABLE_PAGE + '/:sprayingId'}
-              render={({history: {push}, match: {params: {sprayingId}}}) => {
-                return state.isUser ?
-                  <TablePage sprayingId={Number(sprayingId)}/> :
-                  <LoginPage
-                    push={push}
-                    loginSuccess={this.onLogin}
-                  />
-              }
+              render={({history: {push}, match: {params: {sprayingId}}}) => state.isUser ?
+                <TablePage sprayingId={Number(sprayingId)}/> :
+                <LoginPage
+                  push={push}
+                  loginSuccess={this.onLogin}
+                />
               }
             />
           </Switch>

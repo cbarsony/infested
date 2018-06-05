@@ -7,6 +7,7 @@ import {translate, keys} from 'utils/translate'
 
 import {Control} from './Control'
 import {Info} from './Info'
+import {SprayingContext} from './Control/SprayingTable'
 
 const cn = makeBem('TablePage')
 
@@ -33,7 +34,9 @@ export class TablePage extends Component {
     return (
       <div className={cn}>
         <Info description={state.spraying.description}/>
-        <Control sectionList={state.spraying.sections}/>
+        <SprayingContext.Provider value={state.spraying}>
+          <Control/>
+        </SprayingContext.Provider>
       </div>
     )
   }

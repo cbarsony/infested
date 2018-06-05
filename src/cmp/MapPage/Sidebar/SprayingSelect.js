@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
+import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
 import {translate, keys} from 'utils/translate'
+import {constants} from 'utils/constants'
 import {api} from 'api'
 
 const cn = makeBem('SprayingSelect')
 
-export class SprayingSelect extends Component {
+class SprayingSelectComponent extends Component {
   state = {
     shortSprayingDescriptionList: [],
     isShortSprayingDescriptionListLoading: true,
@@ -20,6 +22,8 @@ export class SprayingSelect extends Component {
         isShortSprayingDescriptionListLoading: false,
       }))
   }
+
+  onSelectSpraying = e => this.props.history.push(`${constants.paths.MAP_PAGE}/${Number(e.target.value)}`)
 
   render() {
     const props = this.props
@@ -42,7 +46,7 @@ export class SprayingSelect extends Component {
       <select
         className={cn}
         value={props.sprayingId ? props.sprayingId : ''}
-        onChange={props.selectSpraying}
+        onChange={this.onSelectSpraying}
       >
         {options}
       </select>
@@ -50,7 +54,9 @@ export class SprayingSelect extends Component {
   }
 }
 
-SprayingSelect.propTypes = {
+SprayingSelectComponent.propTypes = {
   sprayingId: PropTypes.number,
-  selectSpraying: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 }
+
+export const SprayingSelect = withRouter(SprayingSelectComponent)

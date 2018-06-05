@@ -2,12 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 import _ from 'lodash'
+import {Link} from 'react-router-dom'
 
-import {Section} from 'api/classes'
 import {translate, keys} from 'utils/translate'
+import {paths} from 'utils/constants/paths'
 import {BoolLabel} from 'cmp/App/BoolLabel'
 
 const cn = makeBem('SprayingTable')
+export const SprayingContext = React.createContext()
 
 export const SprayingTable = props => {
   const chemicalSectorDetailsSummaryHeader = _.range(1, 5).map((chemicalId, chemicalIndex) => (
@@ -43,7 +45,7 @@ export const SprayingTable = props => {
     return chemicalHeaderCells
   })
 
-  const dataTableBody = props.sectionList.map((section, sectionIndex) => {
+  const dataTableBody = spraying => spraying.sections.map((section, sectionIndex) => {
     const weedSectorDetails = props.areWeedSectorsVisible && section.sectors.map((sector, sectorIndex) => (
         <td key={`section${sectionIndex}.sector${sectorIndex}`}>{sector.weedInfestation}</td>
       ))
@@ -76,12 +78,7 @@ export const SprayingTable = props => {
       <tr key={`section${sectionIndex}`}>
         <td>{section.distance}</td>
         <td>
-          <a
-            href="#map"
-            onClick={e => console.log(e, section)}
-          >
-            {section.position.lat + ', ' + section.position.lon}
-          </a>
+          <Link to={`${paths.MAP_PAGE}/${spraying.id}/${section.id}`}>{section.position.lat + ', ' + section.position.lon}</Link>
         </td>
         <td>
           <BoolLabel value={section.sprayed}/>
@@ -114,14 +111,13 @@ export const SprayingTable = props => {
       </tr>
       </thead>
       <tbody>
-      {dataTableBody}
+        <SprayingContext.Consumer>{dataTableBody}</SprayingContext.Consumer>
       </tbody>
     </table>
   )
 }
 
 SprayingTable.propTypes = {
-  sectionList: PropTypes.arrayOf(PropTypes.instanceOf(Section)).isRequired,
   areWeedSectorsVisible: PropTypes.bool.isRequired,
   chemicalSectorVisibility: PropTypes.arrayOf(PropTypes.bool).isRequired,
 }

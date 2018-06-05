@@ -10,10 +10,11 @@ class TablePage {
     --
     spraying:Spraying
     isSprayingLoading:bool
+    --
+    -spraying:Spraying
 }
 
 class Control {
-    sectionList:Section[]
     --
     weed:bool
     chemical1:bool
@@ -27,7 +28,8 @@ class Info {
 }
 
 class SprayingTable {
-    sectionList:Section[]
+    -spraying:Spraying
+    --
     areWeedSectorsVisible:bool
     chemicalSectorVisibility:Array
 }

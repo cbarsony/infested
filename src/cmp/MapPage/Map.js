@@ -10,7 +10,7 @@ import {Popup} from './Popup'
 const popupContainer = document.getElementById('sectionDataPopup')
 
 export class Map extends Component {
-  state = {selectedSectionIndex: -1}
+  state = {sectionId: this.props.sectionId || -1}
 
   componentDidMount() {
     const sprayedVectorSource = new ol.source.Vector({})
@@ -37,7 +37,7 @@ export class Map extends Component {
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
         opacity: 0.8,
-        src: 'img/icon_red_small.png',
+        src: '/img/icon_red_small.png',
       })),
     })
 
@@ -47,7 +47,7 @@ export class Map extends Component {
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
         opacity: 0.8,
-        src: 'img/icon_green_small.png',
+        src: '/img/icon_green_small.png',
       })),
     })
 
@@ -97,7 +97,7 @@ export class Map extends Component {
         const geometry = feature.getGeometry()
         const position = geometry.getCoordinates()
         this.popupOverlay.setPosition(position)
-        this.setState({selectedSectionIndex: feature.get('sectionId')})
+        this.setState({sectionId: feature.get('sectionId')})
       }
     })
 
@@ -112,8 +112,8 @@ export class Map extends Component {
     const boundNotSprayed = this.map.getLayers().getArray()[2].getSource().getExtent()
     this.map.getView().fit(ol.extent.extend(boundSprayed, boundNotSprayed))
     
-    if(this.state.selectedSectionIndex >= 0) {
-      const section = this.props.spraying.sections.find(section => section.id === this.state.selectedSectionIndex)
+    if(this.state.sectionId >= 0) {
+      const section = this.props.spraying.sections.find(section => section.id === this.state.sectionId)
 
       this.popupOverlay.setPosition(ol.proj.fromLonLat([section.position.lon, section.position.lat]))
 
@@ -123,7 +123,7 @@ export class Map extends Component {
     }
   }
 
-  onClosePopup = () => this.setState({selectedSectionIndex: -1})
+  onClosePopup = () => this.setState({sectionId: -1})
 
   render() {
     const props = this.props
@@ -157,9 +157,9 @@ export class Map extends Component {
             }}
           >{translate(keys.FIT_TO_MAP)}</button>
         </div>
-        {state.selectedSectionIndex > -1 && (
+        {state.sectionId > -1 && (
           <Popup
-            section={props.spraying.sections.find(s => s.id === state.selectedSectionIndex)}
+            section={props.spraying.sections.find(s => s.id === state.sectionId)}
             closePopup={this.onClosePopup}
           />
         )}
@@ -168,4 +168,7 @@ export class Map extends Component {
   }
 }
 
-Map.propTypes = {spraying: PropTypes.instanceOf(Spraying)}
+Map.propTypes = {
+  spraying: PropTypes.instanceOf(Spraying).isRequired,
+  sectionId: PropTypes.number,
+}

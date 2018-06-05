@@ -15,10 +15,7 @@ const cn = makeBem('Sidebar')
 
 export const Sidebar = props => (
   <div className={cn}>
-    <SprayingSelect
-      sprayingId={props.spraying && props.spraying.id}
-      selectSpraying={props.selectSpraying}
-    />
+    <SprayingSelect sprayingId={props.spraying && props.spraying.id}/>
     {props.spraying && <Link to={`${constants.paths.TABLE_PAGE}/${props.spraying.id}`}>{translate(keys.OPEN_DATA_TABLE)}</Link>}
     {props.spraying && <SprayingDescription description={props.spraying.description}/>}
     {props.spraying && <SprayingSummary summary={props.spraying.summary}/>}
@@ -27,5 +24,4 @@ export const Sidebar = props => (
 
 Sidebar.propTypes = {
   spraying: PropTypes.instanceOf(Spraying),
-  selectSpraying: PropTypes.func.isRequired,
 }
