@@ -5,6 +5,7 @@ import makeBem from 'bem-cx'
 import {api} from 'api'
 import {translate, keys} from 'utils/translate'
 
+import './TablePage.css'
 import {Control} from './Control'
 import {Info} from './Info'
 import {SprayingContext} from './Control/SprayingTable'

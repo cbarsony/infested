@@ -5,6 +5,7 @@ import makeBem from 'bem-cx'
 import {api} from 'api'
 import {translate, keys} from 'utils/translate'
 
+import './MapPage.css'
 import {Sidebar} from './Sidebar'
 import {Map} from './Map'
 
@@ -56,8 +57,9 @@ export class MapPage extends Component {
 
     return (
       <div className={cn}>
-        {state.isSprayingLoading && <div>{translate(keys.LOADING)}</div>}
+
         <Sidebar spraying={state.spraying}/>
+        {state.isSprayingLoading && <span>{translate(keys.LOADING)}</span>}
         {state.spraying && (
           <Map
             spraying={state.spraying}

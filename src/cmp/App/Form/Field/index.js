@@ -4,20 +4,28 @@ import PropTypes from 'prop-types'
 import {Label} from './Label'
 import {Input} from './Input'
 
-export const Field = props => (
-  <div className="Field">
+export const Field = props => {
+  const label = (
     <Label
       text={props.label}
       htmlFor={'Input__' + props.name}
     />
-    <Input
-      type={props.type}
-      name={props.name}
-      value={props.value}
-      onChange={e => props.onChange(props.type === 'checkbox' ? e.target.checked : e.target.value, props.name)}
-    />
-  </div>
-)
+  )
+
+  return (
+    <div className="Field">
+      {!/checkbox|radio/.test(props.type) && label}
+      <Input
+        type={props.type}
+        name={props.name}
+        value={props.value}
+        onChange={e => props.onChange(props.type === 'checkbox' ? e.target.checked : e.target.value, props.name)}
+      />
+      {/checkbox|radio/.test(props.type) && label}
+    </div>
+  )
+
+}
 
 Field.propTypes = {
   name: PropTypes.string.isRequired,

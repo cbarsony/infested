@@ -1,0 +1,40 @@
+.MapPage {
+    display: grid;
+    grid-template-columns: 350px auto;
+    height: 100%;
+}
+
+.Sidebar {
+    z-index: 1;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+}
+
+.Sidebar > * {
+    height: 100%;
+}
+
+.SprayingSelect {
+    width: 334px;
+}
+
+.SprayingSummary__Table {
+    width: 100%;
+}
+
+.SprayingSummary__Table tr, .SprayingSummary__Table td {
+    padding-left: 0;
+}
+
+.SprayingSummary__Table td:nth-child(2) {
+    text-align: center;
+}
+
+.SprayingSummary__iconContainer {
+    display: inline-block;
+    width: 16px;
+    text-align: center;
+}
+
+.SprayingSummary__sumName {
+    padding-left: 16px;
+}

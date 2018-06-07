@@ -3,16 +3,28 @@ import PropTypes from 'prop-types'
 import makeBem from 'bem-cx'
 
 import {SprayingDescription as CSprayingDescription} from 'api/classes.js'
+import {Item} from 'cmp/App/Item'
 
 const cn = makeBem('SprayingDescription')
 
 export const SprayingDescription = props => (
   <ul className={cn}>
-    <li>{props.description.requestType}</li>
-    <li>{props.description.databaseName}</li>
-    <li>{props.description.sectionSprayed}</li>
-    <li>{props.description.timeSprayed.toString()}</li>
-    <li>{props.description.distanceSprayed}</li>
+    <Item
+      text={props.description.requestType}
+      iconClass="fas fa-info"
+    />
+    <Item
+      text={props.description.sectionSprayed}
+      iconClass="far fa-map"
+    />
+    <Item
+      text={props.description.timeSprayed.toString()}
+      iconClass="far fa-clock"
+    />
+    <Item
+      text={props.description.distanceSprayed}
+      iconClass="fas fa-road"
+    />
   </ul>
 )
 

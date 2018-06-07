@@ -29,55 +29,59 @@ export class SprayingSummary extends Component {
 
     const getChemicalSectorCells = sector => <td key={sector.sectorId}>{sector.quantity}</td>
 
-    /*const showAllSectorsSwitchx = (
-      <Field
-        label={translate(keys.SHOW_ALL_SECTORS)}
-        htmlFor={showAllSectorsCheckbox}
-      >
-        <input
+    const showAllSectorsSwitch = (
+      <div>
+        <i className="fas fa-list"></i>
+        <Field
+          name={showAllSectorsCheckbox}
           type="checkbox"
-          id={showAllSectorsCheckbox}
+          value={false}
+          label={translate(keys.SHOW_ALL_SECTORS)}
           onChange={this.onShowAllSectorsCheckboxChange}
         />
-      </Field>
-    )*/
-
-    const showAllSectorsSwitch = (
-      <Field
-        name={showAllSectorsCheckbox}
-        type="checkbox"
-        value={false}
-        label={translate(keys.SHOW_ALL_SECTORS)}
-        onChange={this.onShowAllSectorsCheckboxChange}
-      />
+      </div>
     )
 
     return (
-      <div>
-        {showAllSectorsSwitch}
-        <table className={cn}>
+      <div className={cn}>
+        <table className={cn.el('Table')}>
           <thead>
           <tr>
             <th/>
-            <th>Sum</th>
+            <th>Sum [l]</th>
             {sectorHeadings}
           </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{translate(keys.WEED_INFESTATION)}</td>
+              <td>
+                <span className={cn.el('iconContainer')}>
+                  <i className="fas fa-leaf"></i>
+                </span>
+                <span className={cn.el('sumName')}>
+                  {translate(keys.WEED_INFESTATION)}
+                </span>
+              </td>
               <td>{props.summary.weedInfestationSummary.quantity}</td>
               {weedSectorCells}
             </tr>
             {props.summary.chemicalSummaries.map(chemicalSummary => (
               <tr key={chemicalSummary.chemicalId}>
-                <td>{translate(keys.CHEMICAL)} {chemicalSummary.chemicalId}</td>
+                <td>
+                  <span className={cn.el('iconContainer')}>
+                    <i className="fas fa-flask"></i>
+                  </span>
+                  <span className={cn.el('sumName')}>
+                    {translate(keys.CHEMICAL)} {chemicalSummary.chemicalId}
+                  </span>
+                </td>
                 <td>{chemicalSummary.quantity}</td>
                 {state.areSectorsVisible && chemicalSummary.sectorQuantities.map(getChemicalSectorCells)}
               </tr>
             ))}
           </tbody>
         </table>
+        {showAllSectorsSwitch}
       </div>
     )
   }

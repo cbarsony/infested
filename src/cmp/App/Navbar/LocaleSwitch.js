@@ -42,7 +42,7 @@ LocaleOption.propTypes = {
 
 export const LocaleSwitch = () => (
   <select
-    className={cn}
+    className={`${cn} transparent`}
     value={locale}
     onChange={onLocaleChange}
   >
