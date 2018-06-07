@@ -151,7 +151,7 @@ export class Map extends Component {
               position: 'absolute',
               zIndex: 1,
               top: 8,
-              right: 8,
+              right: 24,
             }}
             onClick={() => {
               const boundSprayed = this.map.getLayers().getArray()[1].getSource().getExtent()

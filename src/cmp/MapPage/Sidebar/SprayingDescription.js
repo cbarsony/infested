@@ -18,7 +18,7 @@ export const SprayingDescription = props => (
       iconClass="far fa-map"
     />
     <Item
-      text={props.description.timeSprayed.toString()}
+      text={props.description.timeSprayed.toLocaleDateString()}
       iconClass="far fa-clock"
     />
     <Item

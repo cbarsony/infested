@@ -1,7 +1,9 @@
-import {Component} from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import makeBem from 'bem-cx'
 
+const cn = makeBem('Modal')
 const modalRoot = document.getElementById('modalRoot')
 
 export class Modal extends Component {
@@ -12,21 +14,52 @@ export class Modal extends Component {
 
   componentDidMount() {
     modalRoot.appendChild(this.el)
-    this.el.classList.add('Modal')
+    this.el.classList.add(cn.toString())
+    this.keyDown = e => {
+      if(e.key === 'Escape') {
+        this.props.onClose()
+      }
+    }
+    document.addEventListener('keydown', this.keyDown)
   }
 
   componentWillUnmount() {
     modalRoot.removeChild(this.el)
+    document.removeEventListener('keydown', this.keyDown)
   }
 
   render() {
     const props = this.props
 
+    if(!props.isVisible) return null
+
     return ReactDOM.createPortal(
-      props.children,
+      <div
+        className={cn.el('overlay')}
+        onClick={props.onClose}
+        onKeyDown={() => {
+          debugger
+        }}
+      >
+        <div
+          className={cn.el('window')}
+          onClick={e => e.stopPropagation()}
+        >
+          <div
+            className={cn.el('close')}
+            onClick={props.onClose}
+          >
+            <i className="fas fa-times"></i>
+          </div>
+          {props.children}
+        </div>
+      </div>,
       this.el,
     )
   }
 }
 
-Modal.propTypes = {close: PropTypes.func.isRequired}
+Modal.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+}
