@@ -44,6 +44,11 @@ class SprayingSummary {
     areSectorsVisible:bool
 }
 
+class Details {
+    summary:SprayingSummary
+    --
+}
+
 Route -- MapPage
 
 MapPage -- Sidebar
@@ -52,5 +57,6 @@ MapPage -- Map
 Sidebar -- SprayingSelect
 Sidebar -- SprayingDescription
 Sidebar -- SprayingSummary
+Sidebar -- Details
 
 @enduml

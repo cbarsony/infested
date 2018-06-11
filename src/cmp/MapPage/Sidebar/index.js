@@ -14,6 +14,7 @@ import {Hr} from 'cmp/App/Container/Card/Hr'
 import {SprayingSelect} from './SprayingSelect'
 import {SprayingSummary} from './SprayingSummary'
 import {SprayingDescription} from './SprayingDescription'
+import {Details} from './Details'
 
 export class Sidebar extends Component {
   state = {
@@ -33,7 +34,7 @@ export class Sidebar extends Component {
             isVisible={state.inModalVisible}
             onClose={this.onModalClose}
           >
-            <div style={{fontSize: '100px'}}>majom vagy</div>
+            <Details summary={props.spraying.summary}/>
           </Modal>
         )}
         <Container>

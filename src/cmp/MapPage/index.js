@@ -57,7 +57,6 @@ export class MapPage extends Component {
 
     return (
       <div className={cn}>
-
         <Sidebar spraying={state.spraying}/>
         {state.isSprayingLoading && <span>{translate(keys.LOADING)}</span>}
         {state.spraying && (

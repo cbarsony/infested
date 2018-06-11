@@ -71,66 +71,68 @@ export class App extends Component {
             isUser={state.isUser}
             logout={this.onLogout}
           />
-          <Switch>
-            <Route
-              exact
-              path={constants.paths.ROOT}
-              render={() => <Redirect to={constants.paths.MAP_PAGE}/>}
-            />
-            <Route
-              path={constants.paths.LOGIN_PAGE}
-              render={({history: {push}}) => state.isUser ?
-                <Redirect to={constants.paths.MAP_PAGE}/> :
-                <LoginPage
-                  push={push}
-                  loginSuccess={this.onLogin}
-                />
-              }
-            />
-            <Route
-              path={constants.paths.MAP_PAGE + '/:sprayingId/:sectionId'}
-              render={({history: {push}, match: {params: {sprayingId, sectionId}}}) => state.isUser ?
-                <MapPage
-                  sprayingId={Number(sprayingId)}
-                  sectionId={Number(sectionId)}
-                /> :
-                <LoginPage
-                  push={push}
-                  loginSuccess={this.onLogin}
-                />
-              }
-            />
-            <Route
-              path={constants.paths.MAP_PAGE + '/:sprayingId'}
-              render={({history: {push}, match: {params: {sprayingId}}}) => state.isUser ?
-                <MapPage sprayingId={Number(sprayingId)}/> :
-                <LoginPage
-                  push={push}
-                  loginSuccess={this.onLogin}
-                />
-              }
-            />
-            <Route
-              path={constants.paths.MAP_PAGE}
-              render={({history: {push}}) => state.isUser ?
-                <MapPage/> :
-                <LoginPage
-                  push={push}
-                  loginSuccess={this.onLogin}
-                />
-              }
-            />
-            <Route
-              path={constants.paths.TABLE_PAGE + '/:sprayingId'}
-              render={({history: {push}, match: {params: {sprayingId}}}) => state.isUser ?
-                <TablePage sprayingId={Number(sprayingId)}/> :
-                <LoginPage
-                  push={push}
-                  loginSuccess={this.onLogin}
-                />
-              }
-            />
-          </Switch>
+          <div className={cn.el('Page')}>
+            <Switch>
+              <Route
+                exact
+                path={constants.paths.ROOT}
+                render={() => <Redirect to={constants.paths.MAP_PAGE}/>}
+              />
+              <Route
+                path={constants.paths.LOGIN_PAGE}
+                render={({history: {push}}) => state.isUser ?
+                  <Redirect to={constants.paths.MAP_PAGE}/> :
+                  <LoginPage
+                    push={push}
+                    loginSuccess={this.onLogin}
+                  />
+                }
+              />
+              <Route
+                path={constants.paths.MAP_PAGE + '/:sprayingId/:sectionId'}
+                render={({history: {push}, match: {params: {sprayingId, sectionId}}}) => state.isUser ?
+                  <MapPage
+                    sprayingId={Number(sprayingId)}
+                    sectionId={Number(sectionId)}
+                  /> :
+                  <LoginPage
+                    push={push}
+                    loginSuccess={this.onLogin}
+                  />
+                }
+              />
+              <Route
+                path={constants.paths.MAP_PAGE + '/:sprayingId'}
+                render={({history: {push}, match: {params: {sprayingId}}}) => state.isUser ?
+                  <MapPage sprayingId={Number(sprayingId)}/> :
+                  <LoginPage
+                    push={push}
+                    loginSuccess={this.onLogin}
+                  />
+                }
+              />
+              <Route
+                path={constants.paths.MAP_PAGE}
+                render={({history: {push}}) => state.isUser ?
+                  <MapPage/> :
+                  <LoginPage
+                    push={push}
+                    loginSuccess={this.onLogin}
+                  />
+                }
+              />
+              <Route
+                path={constants.paths.TABLE_PAGE + '/:sprayingId'}
+                render={({history: {push}, match: {params: {sprayingId}}}) => state.isUser ?
+                  <TablePage sprayingId={Number(sprayingId)}/> :
+                  <LoginPage
+                    push={push}
+                    loginSuccess={this.onLogin}
+                  />
+                }
+              />
+            </Switch>
+          </div>
         </div>
       </Router>
     );

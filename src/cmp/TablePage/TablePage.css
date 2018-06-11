@@ -1,4 +1,76 @@
 .TablePage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
     overflow-x: auto;
-    padding: 8px;
+}
+
+.Control {
+    padding: 8px 0;
+}
+
+.Control > * {
+    margin-right: 8px;
+}
+
+.Control .Field {
+    display: inline-block;
+}
+
+.SprayingTable__TableContainer {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 60px;
+    left: 0;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.SprayingTable table {
+    height: 100%;
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.SprayingTable__Pagination {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SprayingTable__Pagination > * {
+    margin-right: 8px;
+}
+
+.TablePage .Card:nth-child(2) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 100px;
+}
+
+table thead tr:nth-child(1) th {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+table thead tr:nth-child(2) th {
+    background: #fff;
+    position: sticky;
+    top: 30px;
+    z-index: 10;
 }

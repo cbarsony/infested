@@ -10,17 +10,16 @@ class TablePage {
     --
     spraying:Spraying
     isSprayingLoading:bool
-    --
-    -spraying:Spraying
+    areWeedSectorsVisible:bool
+    chemicalSectorsVisibility:Array
 }
 
 class Control {
+    areWeedSectorsVisible:bool
+    chemicalSectorsVisibility:Array
+    setWeedSectorsVisibility(areWeedSectorsVisible:bool)
+    setChemicalSectorsVisibility(chemicalSectorsVisibility:Array)
     --
-    weed:bool
-    chemical1:bool
-    chemical2:bool
-    chemical3:bool
-    chemical4:bool
 }
 
 class Info {
@@ -28,15 +27,14 @@ class Info {
 }
 
 class SprayingTable {
-    -spraying:Spraying
-    --
+    spraying:Spraying
     areWeedSectorsVisible:bool
-    chemicalSectorVisibility:Array
+    chemicalSectorsVisibility:Array
 }
 
 Route -- TablePage
-TablePage -- Control
 TablePage -- Info
-Control -- SprayingTable
+TablePage -- Control
+TablePage -- SprayingTable
 
 @enduml

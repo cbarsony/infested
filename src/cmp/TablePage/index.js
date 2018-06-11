@@ -4,11 +4,13 @@ import makeBem from 'bem-cx'
 
 import {api} from 'api'
 import {translate, keys} from 'utils/translate'
+import {Container} from 'cmp/App/Container'
+import {Card} from 'cmp/App/Container/Card'
 
 import './TablePage.css'
 import {Control} from './Control'
 import {Info} from './Info'
-import {SprayingContext} from './Control/SprayingTable'
+import {SprayingTable} from './SprayingTable'
 
 const cn = makeBem('TablePage')
 
@@ -16,6 +18,13 @@ export class TablePage extends Component {
   state = {
     spraying: null,
     isSprayingLoading: true,
+    areWeedSectorsVisible: false,
+    chemicalSectorsVisibility: [
+      false,
+      false,
+      false,
+      false,
+    ],
   }
 
   componentDidMount() {
@@ -27,6 +36,10 @@ export class TablePage extends Component {
       .catch(error => console.warn(error))
   }
 
+  setWeedSectorsVisibility = areWeedSectorsVisible => this.setState({areWeedSectorsVisible})
+
+  setChemicalSectorsVisibility = chemicalSectorsVisibility => this.setState({chemicalSectorsVisibility})
+
   render() {
     const state = this.state
 
@@ -34,10 +47,24 @@ export class TablePage extends Component {
 
     return (
       <div className={cn}>
-        <Info description={state.spraying.description}/>
-        <SprayingContext.Provider value={state.spraying}>
-          <Control/>
-        </SprayingContext.Provider>
+        <Container>
+          <Card>
+            <Info description={state.spraying.description}/>
+            <Control
+              areWeedSectorsVisible={state.areWeedSectorsVisible}
+              chemicalSectorsVisibility={state.chemicalSectorsVisibility}
+              setWeedSectorsVisibility={this.setWeedSectorsVisibility}
+              setChemicalSectorsVisibility={this.setChemicalSectorsVisibility}
+            />
+          </Card>
+          <Card>
+            <SprayingTable
+              spraying={state.spraying}
+              areWeedSectorsVisible={state.areWeedSectorsVisible}
+              chemicalSectorsVisibility={state.chemicalSectorsVisibility}
+            />
+          </Card>
+        </Container>
       </div>
     )
   }

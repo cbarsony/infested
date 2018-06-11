@@ -42,3 +42,19 @@
 .SprayingSummary__sumName {
     padding-left: 16px;
 }
+
+.Details table {
+    table-layout: fixed;
+}
+
+.Details th, td {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.Details td:first-child span {
+    display: inline-block;
+    width: 16px;
+    text-align: center;
+    margin-right: 16px;
+}
