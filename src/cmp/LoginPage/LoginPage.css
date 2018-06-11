@@ -1,0 +1,13 @@
+.LoginPage {
+    display: flex;
+    justify-content: center;
+    padding-top: 32px;
+}
+
+.LoginPage .Field {
+    margin-bottom: 16px;
+}
+
+.LoginPage input {
+    display: block;
+}

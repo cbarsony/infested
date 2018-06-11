@@ -6,6 +6,8 @@ import {translate, keys} from 'utils/translate'
 import {api} from 'api'
 import {constants} from 'utils/constants'
 
+import './LoginPage.css'
+
 export class LoginPage extends Component {
   state = {
     errorMessage: '',

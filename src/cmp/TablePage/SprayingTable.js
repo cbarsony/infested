@@ -22,33 +22,50 @@ export class SprayingTable extends Component {
     const props = this.props
     const state = this.state
 
-    const chemicalSectorDetailsSummaryHeader = _.range(1, 5).map((chemicalId, chemicalIndex) => (
-      <th
-        key={`chemical${chemicalIndex}`}
-        colSpan={2 + (props.chemicalSectorsVisibility[chemicalIndex] ? 11 : 0)}
-      >
-        {translate(keys.CHEMICAL)} {chemicalId}
-      </th>
-    ))
+    const chemicalSectorDetailsSummaryHeader = _.range(1, 5).map((chemicalId, chemicalIndex) => {
+      const cellClassName = chemicalIndex % 2 === 0 ? 'even' : 'odd'
+
+      return (
+        <th
+          className={cellClassName}
+          key={`chemical${chemicalIndex}`}
+          colSpan={2 + (props.chemicalSectorsVisibility[chemicalIndex] ? 11 : 0)}
+        >
+          {translate(keys.CHEMICAL)} {chemicalId}
+        </th>
+      )
+    })
 
     const weedSectorDetailsHeader = props.areWeedSectorsVisible && _.range(1, 10).map((sectorId, sectorIndex) => (
         <th key={`sector${sectorIndex}`}>{translate(keys.WEED_INFESTATION)} {translate(keys.SECTOR)} {sectorId} [%]</th>
       ))
 
     const chemicalSectorDetailsHeader = _.range(1, 5).map((chemicalId, chemicalIndex) => {
+      const cellClassName = chemicalIndex % 2 === 0 ? 'even' : 'odd'
+
       const chemicalHeaderCells = [
-        <th key={`chemical${chemicalIndex}.quantity`}>{translate(keys.QUANTITY)} [l]</th>,
-        <th key={`chemical${chemicalIndex}.dosage`}>{translate(keys.DOSE)} [l/ha]</th>,
+        <th
+          className={cellClassName}
+          key={`chemical${chemicalIndex}.quantity`}>{translate(keys.QUANTITY)} [l]</th>,
+        <th
+          className={cellClassName}
+          key={`chemical${chemicalIndex}.dosage`}>{translate(keys.DOSE)} [l/ha]</th>,
       ]
 
       if(props.chemicalSectorsVisibility[chemicalIndex]) {
         chemicalHeaderCells.push(..._.range(1, 10).map((sectorId, sectorIndex) => (
-          <th key={`chemical${chemicalIndex}.sector${sectorIndex}`}>{translate(keys.SECTOR)} {sectorId} {translate(keys.DOSE)} [l/ha]</th>
+          <th
+            className={cellClassName}
+            key={`chemical${chemicalIndex}.sector${sectorIndex}`}>{translate(keys.SECTOR)} {sectorId} {translate(keys.DOSE)} [l/ha]</th>
         )))
 
         chemicalHeaderCells.push(...[
-          <th key={`chemical${chemicalIndex}.leftNozzleMajority`}>{translate(keys.LEFT_NOZZLE_MAJORITY)}</th>,
-          <th key={`chemical${chemicalIndex}.rightNozzleMajority`}>{translate(keys.RIGHT_NOZZLE_MAJORITY)}</th>,
+          <th
+            className={cellClassName}
+            key={`chemical${chemicalIndex}.leftNozzleMajority`}>{translate(keys.LEFT_NOZZLE_MAJORITY)}</th>,
+          <th
+            className={cellClassName}
+            key={`chemical${chemicalIndex}.rightNozzleMajority`}>{translate(keys.RIGHT_NOZZLE_MAJORITY)}</th>,
         ])
       }
 
@@ -61,21 +78,38 @@ export class SprayingTable extends Component {
         ))
 
       const chemicalSectorDetails = section.chemicals.map((chemical, chemicalIndex) => {
+        const cellClassName = chemicalIndex % 2 === 0 ? 'even' : 'odd'
+
         const chemicalCells = [
-          <td key={`section${sectionIndex}.chemical${chemicalIndex}.quantity`}>{chemical.quantity}</td>,
-          <td key={`section${sectionIndex}.chemical${chemicalIndex}.dosage`}>{chemical.dosage}</td>,
+          <td
+            className={cellClassName}
+            key={`section${sectionIndex}.chemical${chemicalIndex}.quantity`}
+          >{chemical.quantity}</td>,
+          <td
+            className={cellClassName}
+            key={`section${sectionIndex}.chemical${chemicalIndex}.dosage`}
+          >{chemical.dosage}</td>,
         ]
 
         if(props.chemicalSectorsVisibility[chemicalIndex]) {
           chemicalCells.push(..._.range(1, 10).map((sectorId, sectorIndex) => (
-            <td key={`section${sectionIndex}.chemical${chemicalIndex}.sector${sectorIndex}`}>{chemical.sectors[sectorIndex].dosage}</td>
+            <td
+              className={cellClassName}
+              key={`section${sectionIndex}.chemical${chemicalIndex}.sector${sectorIndex}`}
+            >{chemical.sectors[sectorIndex].dosage}</td>
           )))
 
           chemicalCells.push(...[
-            <td key={`${sectionIndex}.${chemicalIndex}.leftNozzleMajority`}>
+            <td
+              className={cellClassName}
+              key={`${sectionIndex}.${chemicalIndex}.leftNozzleMajority`}
+            >
               <BoolLabel value={chemical.leftNozzleMajority}/>
             </td>,
-            <td key={`${sectionIndex}.${chemicalIndex}.rightNozzleMajority`}>
+            <td
+              className={cellClassName}
+              key={`${sectionIndex}.${chemicalIndex}.rightNozzleMajority`}
+            >
               <BoolLabel value={chemical.rightNozzleMajority}/>
             </td>,
           ])
@@ -134,7 +168,7 @@ export class SprayingTable extends Component {
             </tr>
             </thead>
             <tbody>
-            {dataTableBody}
+              {dataTableBody}
             </tbody>
           </table>
         </div>
